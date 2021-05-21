@@ -45,42 +45,18 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-  .then((tagData) => {
-    return Tag.findAll({ where: {tag_id: req.params.id}});
-
-  })
-  .then((tagData) => {
-    const tagDataIds = tagData.map(({tag_id}) => tag_id);
-    const newTagIds = req.body.tagIds
-    .filter((tag_id) => !tagDataIds.includes(tag_id))
-      .map((tag_id) =>{
-        return{
-          tag_id: req.params.id,
-          
-        };
-      });
-      //figure out which ones to remove
-      const tagIdToRemove = tagDataIds
-      .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
-      .map(({ id }) => id);
-      //run both actions
-      return Promise.all([
-        Tag.destroy({ where: {id: tagIdToRemove }}),
-        Tag.bulkCreate(newTagIds),
-      ]);
-    })
-    .then((updatedTags) => res.json(updatedTags))
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-  });
+ try{
+  const tagData = await Tag.update(
+    { tag_name: req.body.tag_name},
+     { returning: true, where:{ id: req.params.id} }
+  )
+  res.status(200).json(tagData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
