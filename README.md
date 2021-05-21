@@ -1,4 +1,4 @@
-# e-commerce-backend
+# E-Commerce-Backend
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
@@ -55,14 +55,19 @@ THEN I am able to successfully create, update, and delete data in my database
 
 ## Images
 
-![Screenshot of Application]()
-![Screenshot of Application]()
-![Screenshot of Application]()
-![Screenshot of Application]()
+![Screenshot of Application](./Images/Get_All_Products.png)
+![Screenshot of Application](./Images/Get_1_Product.png)
+![Screenshot of Application](./Images/Create_New_Product.png)
+![Screenshot of Application](./Images/Update_Product.png)
+![Screenshot of Application](./Images/Delete_Product.png)
+![Screenshot of Application](./Images/Product_No_Longer_Found.png)
+
 
 ## Demo
 
-[Link to Video Demo]()
+[Link to Video Demo](https://drive.google.com/file/d/1b5W4CUWSaxEbd8lMTE6T-lYizcAAUdET/view)
+
+[Github Repo Link](https://github.com/johnsoncm/e-commerce-backend)
 
 ## Contact
 
